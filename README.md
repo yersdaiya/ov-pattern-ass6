@@ -224,9 +224,3 @@ which is this project: a stable tree where new operations are added (commit A).
 | `ParallelPublisherTest` | 3 | stress test 4 threads × 1,000 events = exactly 4,000, graceful close, unsubscribe while publishing |
 | `AverageDelayVisitorTest` | 3 | commit A |
 | `SecurityCheckpointTest` | 3 | commit B |
-
-## Commit history
-
-```
-<paste the output of: git log --oneline>
-```
