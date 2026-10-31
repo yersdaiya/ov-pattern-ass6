@@ -6,6 +6,7 @@ import airport.model.CheckInDesk;
 import airport.model.Flight;
 import airport.model.Gate;
 import airport.model.Lounge;
+import airport.model.SecurityCheckpoint;
 import airport.model.Shop;
 import airport.model.Terminal;
 import airport.model.Visitor;
@@ -56,6 +57,12 @@ public final class JsonExportVisitor implements Visitor<String> {
     public String visit(CheckInDesk desk) {
         return "{\"type\":\"checkInDesk\",\"id\":" + quote(desk.id())
                 + ",\"passengersProcessed\":" + desk.passengersProcessed() + "}";
+    }
+
+    @Override
+    public String visit(SecurityCheckpoint checkpoint) {
+        return "{\"type\":\"securityCheckpoint\",\"id\":" + quote(checkpoint.id())
+                + ",\"passengersScreened\":" + checkpoint.passengersScreened() + "}";
     }
 
     private String array(List<? extends AirportElement> elements) {

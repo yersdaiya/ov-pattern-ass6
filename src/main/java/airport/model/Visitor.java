@@ -14,4 +14,6 @@ public interface Visitor<R> {
     R visit(Shop shop);
 
     R visit(CheckInDesk desk);
+
+    R visit(SecurityCheckpoint checkpoint);
 }

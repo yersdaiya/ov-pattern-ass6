@@ -6,6 +6,7 @@ import airport.model.CheckInDesk;
 import airport.model.Flight;
 import airport.model.Gate;
 import airport.model.Lounge;
+import airport.model.SecurityCheckpoint;
 import airport.model.Shop;
 import airport.model.Terminal;
 import airport.model.Visitor;
@@ -47,6 +48,11 @@ public final class DelayedFlightsFilter implements Visitor<List<Flight>> {
 
     @Override
     public List<Flight> visit(CheckInDesk desk) {
+        return List.of();
+    }
+
+    @Override
+    public List<Flight> visit(SecurityCheckpoint checkpoint) {
         return List.of();
     }
 

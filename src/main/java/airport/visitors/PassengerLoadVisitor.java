@@ -6,6 +6,7 @@ import airport.model.CheckInDesk;
 import airport.model.Flight;
 import airport.model.Gate;
 import airport.model.Lounge;
+import airport.model.SecurityCheckpoint;
 import airport.model.Shop;
 import airport.model.Terminal;
 import airport.model.Visitor;
@@ -62,6 +63,11 @@ public final class PassengerLoadVisitor implements Visitor<Void> {
 
     @Override
     public Void visit(CheckInDesk desk) {
+        return null;
+    }
+
+    @Override
+    public Void visit(SecurityCheckpoint checkpoint) {
         return null;
     }
 
