@@ -9,6 +9,7 @@ import airport.events.FlightDelayed;
 import airport.events.GateChanged;
 import airport.feeds.BaggageFeed;
 import airport.feeds.FlightStatusFeed;
+import airport.feeds.ParallelPublisher;
 import airport.listeners.BaggageSystem;
 import airport.listeners.DelayStatistics;
 import airport.listeners.DepartureBoard;
@@ -46,6 +47,12 @@ public final class Main {
         flightFeed.publish(new FlightCancelled("KC101", "weather"));
 
         System.out.println("Delays: " + stats.delayCount() + ", total minutes: " + stats.totalDelayMinutes());
+        int producerThreads = Integer.getInteger("producer.threads", 3);
+        try (ParallelPublisher publisher = new ParallelPublisher(flightFeed, producerThreads)) {
+            for (int p = 0; p < producerThreads; p++) {
+                publisher.publishAsync(List.of(new FlightDelayed("KC20" + p, 5)));
+            }
+        }
         System.out.println("Bags for KC101 after cancel: " + baggage.bagsOf("KC101"));
     }
 }
